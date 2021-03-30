@@ -1,13 +1,13 @@
 class Contestant {
     constructor(){
       this.index = null;
-      this.distance = 0 ;
-      this.name = null ;
+      this.answer = 0;
+      this.name = null;
     }
   
     getCount(){
       var contestantCountRef = database.ref('contestantCount');
-      contestantCountRef.on("value",function(data){
+      contestantCountRef.on("value",(data)=>{
         contestantCount = data.val();
       })
     }
@@ -25,14 +25,11 @@ class Contestant {
         answer:this.answer
       });
     }
+  
     static getPlayerInfo(){
       var contestantInfoRef = database.ref('contestants');
       contestantInfoRef.on("value",(data)=>{
-        contestant = data.val();
+        allContestants = data.val();
       })
     }
-}
-
-    
-
-  
+  }
